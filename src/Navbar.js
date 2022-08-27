@@ -4,6 +4,8 @@ import { links, social } from './data';
 import logo from './logo.svg';
 
 const Navbar = () => {
+  // const [navLinks, setNavLinks] = useState(links);
+
   return (
     <nav>
       <div className='nav-center'>
@@ -15,36 +17,27 @@ const Navbar = () => {
         </div>
         <div className='links-container show-container'>
           <ul className='links'>
-            <li>
-              <a href='#'>Home</a>
-            </li>
-            <li>
-              <a href='#'>About</a>
-            </li>
-            <li>
-              <a href='#'>Contact</a>
-            </li>
-            <li>
-              <a href='#'>Products</a>
-            </li>
+            {links.map((link) => {
+              const { id, url, text } = link;
+
+              return (
+                <li key={id}>
+                  <a href={url}>{text}</a>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <ul className='social-icons'>
-          <li>
-            <a href='https://www.twitter.com'>
-              <FaTwitter />
-            </a>
-          </li>
-          <li>
-            <a href='https://www.twitter.com'>
-              <FaTwitter />
-            </a>
-          </li>
-          <li>
-            <a href='https://www.twitter.com'>
-              <FaTwitter />
-            </a>
-          </li>
+          {social.map((item) => {
+            const { id, url, icon } = item;
+
+            return (
+              <li key={id}>
+                <a href={url}>{icon}</a>
+              </li>
+            );
+          })}
         </ul>
       </div>
       ;
